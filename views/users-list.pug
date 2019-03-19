@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1 Users List
+  ul(class='users')
+    each user in usersList
+      li(class='users__item')
+        div(class='users__field')
+          div(class='users__field-property') Name: 
+          div(class='users__field-value') #{user.username}
+        div(class='users__field')
+          div(class='users__field-property') Email:
+          div(class='users__field-value') #{user.email}
+        div(class='users__field')
+          div(class='users__field-property') Role:
+          div(class='users__field-value') #{user.role}
+        div(class='users__field')
+          div(class='users__field-property') Created At:
+          div(class='users__field-value') #{user.createdAt}
+  include includes/pagination

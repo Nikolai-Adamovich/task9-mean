@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  div(class='form')
+    div(class='form__field')
+      input(id='username', class='form__input', type='text', name='username', placeholder='Username', required, focus)
+    div(class='form__field')
+      input(id='password', class='form__input', type='password', name='password', placeholder='Password', required)
+    div(class='form__field')
+      button(id='login_button', class='form__button') Login
+    h6 To get access to admin section use login: admin, password: 123123

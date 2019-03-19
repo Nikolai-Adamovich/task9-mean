@@ -1,0 +1,23 @@
+.button {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: $teal;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 0.3s background-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($teal, 5%);
+  }
+
+  &--delete {
+    background-image: url(img/delete.svg);
+  }
+
+  &--edit {
+    background-image: url(img/edit.svg);
+  }
+}

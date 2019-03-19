@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Create News
+  div(class='form')
+    div(class='form__field')
+      input(id='title', class='form__input', type='text', name='title', placeholder='Title', required, focus)
+    div(class='form__field')
+      input(id='slug', class='form__input', type='text', name='slug', placeholder='Slug', required)
+    div(class='form__field')
+      label
+        div(class='form__image-preview')
+          span  Click to upload image
+        input(id='image', type='file', name='image', accept='image/x-png,image/jpeg', required, hidden)
+    div(class='form__field')
+      textarea(id='content', type='text', name='content', placeholder='Content', required)
+    div(class='form__field')
+      button(id='create_button', class='form__button') Create

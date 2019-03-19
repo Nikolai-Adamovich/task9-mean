@@ -1,0 +1,66 @@
+.nav {
+  position: relative;
+}
+
+.nav__button {
+  display: flex;
+  flex-wrap: nowrap;
+  cursor: pointer;
+}
+
+.nav__user-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  &--logged-in {
+    background: url(img/user-logged-in.svg) center / 1.5rem no-repeat;
+  }
+  &--logged-out {
+    background: url(img/user-logged-out.svg) center / 1.5rem no-repeat;
+  }
+}
+
+.nav__menu {
+  padding: 5px;
+  max-height: calc(100vh - 54px);
+  display: none;
+  position: absolute;
+  top: 39px;
+  right: 0;
+  overflow-y: auto;
+  font-size: 1rem;
+  background: $teal;
+  transition: ease-in-out 0.3s;
+  z-index: 10;
+  
+  .header--small & {
+    max-height: calc(100vh - 30px);
+    top: 30px;
+  }
+  
+  &--visible {
+    display: block;
+  }
+}
+
+.nav__menu-item {
+  padding: 5px 12px;
+  white-space: nowrap;
+
+  &--username {
+    border-bottom: 1px solid $light-gray;
+  }
+
+  &--link {
+    padding-left: 15px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($teal, 5%);
+    }
+
+    a {
+      color: $light-gray;
+    }
+  }
+}

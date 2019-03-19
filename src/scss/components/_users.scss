@@ -1,0 +1,14 @@
+.users {
+  &__item {
+    padding: 20px 0;
+  }
+
+  &__field {
+    display: flex;
+  }
+
+  &__field-property {
+    width: 100px;
+    font-weight: 600;
+  }
+}
