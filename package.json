@@ -5,10 +5,10 @@
   "main": "app.js",
   "scripts": {
     "heroku-prebuild": "npm i -D",
-    "start": "webpack --mode production && cross-env NODE_ENV=production node ./bin/www",
+    "start": "webpack --mode production && cross-env NODE_ENV=production node ./server/bin/www",
     "dev": "npm-run-all --parallel webpack-dev node-dev",
     "webpack-dev": "webpack --mode development --progress --colors --watch",
-    "node-dev": "cross-env NODE_ENV=development PORT=8080 node ./bin/www"
+    "node-dev": "cross-env NODE_ENV=development PORT=8080 node ./server/bin/www"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
