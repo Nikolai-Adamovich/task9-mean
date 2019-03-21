@@ -1,12 +1,16 @@
 doctype html
 html
   head
+    meta(charset='utf-8')
     title= title
-    link(rel='stylesheet', href='/index.css')
+    base(href='/')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='icon' type='image/x-icon' href='favicon.ico')
   body
-    include includes/header
-    main(class='main')
-      div(class='main__container')
-        block content
-    include includes/footer
-    script(src='/index.js')
+    block content
+    script(src='runtime.js')
+    script(src='es2015-polyfills.js' nomodule)
+    script(src='polyfills.js')
+    script(src='styles.js')
+    script(src='vendor.js')
+    script(src='main.js')

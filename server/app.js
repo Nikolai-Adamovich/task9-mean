@@ -23,7 +23,7 @@ app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 // Session
 app.use(session({
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
   // Some settings
   req.session.newsPerPage = 10;
   req.session.usersPerPage = 10;
-  
+
   next();
 });
 
@@ -68,7 +68,7 @@ app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = err;
-  
+
   if (req.app.get('env') === 'production') {
     delete res.locals.error.stack;
   }

@@ -1,20 +1,4 @@
 extends layout
 
 block content
-  ul(class='news')
-    each news in newsList
-      li(class='news__item')
-        article(class='news__article')
-          h2(class='news__title')
-            .
-              #{news.title}
-            if isAuthenticated && user.role === 'admin'
-              include includes/article-panel
-          div(class='news__main')
-            div(class='news__image' style=`background-image: url(${news.imgUrl});`)
-            div(class='news__content') #{news.content}
-          footer(class='news__footer')
-            div(class='news__author') #{news.author}
-            div(class='news__published-at') #{news.publishedAt}
-            div(class='news__updated-at') #{news.updatedAt}
-  include includes/pagination
+  app-root
