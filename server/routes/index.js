@@ -11,10 +11,7 @@ router.get('/', async (req, res, next) => {
     const pagesCount = Math.ceil(newsCount / newsPerPage);
 
     res.render('index', {
-      title: 'Some News',
-      newsList: newsList,
-      pageNumber: 1,
-      pagesCount: pagesCount
+      title: 'Some News'
     });
   } catch (error) {
     res.render('error');
