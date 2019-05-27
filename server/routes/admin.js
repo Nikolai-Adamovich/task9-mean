@@ -12,11 +12,15 @@ router.all('/*', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  res.render('admin', { title: 'Admin' });
+  res.render('index');
 });
 
-router.get('/create-news', (req, res, next) => {
-  res.render('create-news', { title: 'Create News' });
+router.get('/create-article', (req, res, next) => {
+  res.render('index');
+});
+
+router.get('/users', (req, res, next) => {
+  res.render('index');
 });
 
 router.get('/edit-news/:slug', (req, res, next) => {
@@ -49,52 +53,15 @@ router.get('/delete-news/:slug', (req, res, next) => {
   });
 });
 
-router.get('/users-list', async (req, res, next) => {
-  try {
-    const usersPerPage = req.session.usersPerPage;
-    const usersList = await UserModel.find().limit(usersPerPage);
-    const usersCount = await UserModel.find().countDocuments();
-    const pagesCount = Math.ceil(usersCount / usersPerPage);
-
-    res.render('users-list', {
-      title: 'Users List',
-      usersList: usersList,
-      pageNumber: 1,
-      pagesCount: pagesCount,
-      path: '/admin/users-list/'
-    });
-  } catch (error) {
-    res.render('error');
-  }
-});
-
-router.get('/users-list/:pageNumber(0|1)', (req, res, next) => {
-  res.redirect('/admin/users-list');
-});
-
-router.get('/users-list/:pageNumber(\\d+)', async (req, res, next) => {
-  try {
-    const usersPerPage = req.session.usersPerPage;
-    const pageNumber = parseInt(req.params.pageNumber, 10);
-    const usersCount = await UserModel.find().countDocuments();
-    const pagesCount = Math.ceil(usersCount / usersPerPage);
-
-    if (!usersCount || pageNumber > pagesCount) {
-      res.redirect('/');
+/* Get list of all users */
+router.get('/users-list', (req, res, next) => {
+  UserModel.find({}, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
     } else {
-      const usersList = await UserModel.find().skip((pageNumber - 1) * usersPerPage).limit(usersPerPage);
-
-      res.render('users-list', {
-        title: `Users List: Page ${pageNumber}`,
-        usersList: usersList,
-        pageNumber: pageNumber,
-        pagesCount: pagesCount,
-        path: '/admin/users-list/'
-      });
+      res.json(data || []);
     }
-  } catch (error) {
-    res.render('error');
-  }
+  });
 });
 
 module.exports = router;

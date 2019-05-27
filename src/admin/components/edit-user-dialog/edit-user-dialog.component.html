@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Edit user info</h1>
+<form #editUserForm="ngForm" class="form" novalidate>
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.username" #username="ngModel" name="username" placeholder="Name" type="text"
+        required pattern="[A-Za-z]{2,}[0-9]*" appForbiddenName="admin" maxlength="20">
+      <mat-error *ngIf="username.touched && username.errors?.required">Name is required</mat-error>
+      <mat-error *ngIf="username.touched && username.errors?.pattern">Invalid name</mat-error>
+      <mat-error *ngIf="username.touched && username.errors?.forbiddenName">Name
+        «{{username.errors?.forbiddenName.value}}» is forbidden</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.email" #email="ngModel" name="email" class="form__input" placeholder="Email"
+        type="email" email required>
+      <mat-error *ngIf="email.touched && email.errors?.required">Email is required</mat-error>
+      <mat-error *ngIf="email.touched && email.errors?.email">Invalid email</mat-error>
+    </mat-form-field>
+    <div>
+      <label id="role" class="radio-group-label">Role</label>
+      <mat-radio-group [(ngModel)]="data.role" name="role" aria-labelledby="role">
+        <mat-radio-button value="user" color="primary">User</mat-radio-button>
+        <mat-radio-button value="admin" color="primary">Admin</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button [disabled]="editUserForm.invalid ||
+      (data.username === primaryUserState.username && data.email === primaryUserState.email && data.role === primaryUserState.role)"
+      mat-button [mat-dialog-close]="true">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</form>

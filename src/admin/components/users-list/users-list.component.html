@@ -1,0 +1,22 @@
+<ul class="users-list">
+  <li *ngFor="let user of usersList" class="users-list__item">
+    <mat-card>
+      <mat-card-header>
+        <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="user avatar">
+        <mat-card-title>{{user.username}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>Role: {{user.role}}</div>
+        <div>Email: {{user.email}}</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="onEditButtonClick(user)" mat-icon-button matTooltip="Edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="onDeleteButtonClick(user)" mat-icon-button matTooltip="Delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>

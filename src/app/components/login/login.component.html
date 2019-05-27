@@ -1,0 +1,24 @@
+<div class="transition-block">
+  <div class="transition-block__content">
+
+    <mat-card class="mat-elevation-z2">
+      <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && onFormSubmit(loginForm)" class="form" novalidate>
+        <mat-card-title>Login to your account</mat-card-title>
+        <mat-form-field>
+          <input matInput [(ngModel)]="user.username" #username="ngModel" name="username" placeholder="Name" type="text"
+            required maxlength="20">
+          <mat-error *ngIf="username.touched && username.errors?.required">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="user.password" #password="ngModel" name="password" class="form__input"
+            placeholder="Password" type="password" required maxlength="20">
+          <mat-error *ngIf="password.touched && password.errors?.required">Password is required</mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+          <button [disabled]="loginForm.invalid" mat-raised-button>Login</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+
+  </div>
+</div>

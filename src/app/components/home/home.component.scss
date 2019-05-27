@@ -1,0 +1,77 @@
+@import '../../../scss/variables';
+
+.news {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media ($tablet-large) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.news__item {
+  margin-bottom: 20px;
+
+  @media ($tablet-large) {
+    width: calc(50% - 10px);
+  }
+
+  @media ($desktop) {
+    width: calc(50% - 20px);
+    margin-bottom: 40px;
+  }
+}
+
+.news__article {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news__title {
+  font-size: 1.375rem;
+}
+
+.news__main {
+  margin-bottom: 10px
+}
+
+.news__image {
+  width: 100%;
+  margin-bottom: 10px;
+  padding-bottom: 56.25%;
+  position: relative;
+
+  @media ($tablet) {
+    width: 50%;
+    margin: 0 15px 10px 0;
+    padding-bottom: 28.125%;
+    float: left;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+  }
+}
+
+.news__content {
+  font-size: 1.125rem;
+}
+
+.news__footer {
+  margin-top: auto;
+  width: 100%;
+  clear: both;
+  align-self: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}

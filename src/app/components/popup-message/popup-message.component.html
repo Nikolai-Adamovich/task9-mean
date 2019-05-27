@@ -1,0 +1,10 @@
+<mat-card class="popup-message mat-elevation-z3"
+  [ngClass]="{'popup-message--error': options?.type === 'error', 'popup-message--success': options?.type === 'success'}"
+  [@showHide]="showHideTriggerState" (@showHide.done)="showHideTransitionDone()">
+  <button mat-icon-button class="popup-message__close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="popup-message__content">
+    {{options?.message}}
+  </div>
+</mat-card>

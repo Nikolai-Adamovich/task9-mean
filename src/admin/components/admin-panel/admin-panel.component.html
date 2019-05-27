@@ -1,0 +1,11 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <mat-action-list role="list">
+      <a mat-list-item [routerLink]="['create-article']" [routerLinkActive]="['link--active']">Create article</a>
+      <a mat-list-item [routerLink]="['users']" [routerLinkActive]="['link--active']">Users</a>
+    </mat-action-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

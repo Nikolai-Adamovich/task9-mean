@@ -1,0 +1,26 @@
+<header class="header">
+  <mat-toolbar color="primary" class="header__fixed mat-elevation-z3">
+    <nav color="accent" class="header__container">
+      <a [routerLink]="['/']" [routerLinkActive]="['link--active']" [routerLinkActiveOptions]="{exact: true}"
+        mat-icon-button><mat-icon>home</mat-icon></a>
+      <h1>Some news</h1>
+      <div *ngIf="currentUser; then loggedIn else loggedOut"></div>
+      <ng-template #loggedIn>
+        <button mat-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>person</mat-icon>{{currentUser?.username}}
+        </button>
+      </ng-template>
+      <ng-template #loggedOut>
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+      </ng-template>
+      <mat-menu #appMenu="matMenu">
+        <a *ngIf="!currentUser" [routerLink]="['/register']" [routerLinkActive]="['link--active']" mat-menu-item>Register</a>
+        <a *ngIf="!currentUser" [routerLink]="['/login']" [routerLinkActive]="['link--active']" mat-menu-item>Login</a>
+        <a *ngIf="currentUser?.role === 'admin'" [routerLink]="['/admin']" [routerLinkActive]="['link--active']" mat-menu-item>Admin panel</a>
+        <button *ngIf="currentUser" (click)="userService.logout()" mat-menu-item>Logout</button>
+      </mat-menu>
+    </nav>
+  </mat-toolbar>
+</header>

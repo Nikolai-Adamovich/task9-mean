@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const CookieStrategy = require('passport-cookie').Strategy;
 const bcrypt = require('bcryptjs');
 const UserModel = require('../models/user');
 
@@ -26,7 +27,22 @@ passport.use(new LocalStrategy(
         }
       });
     });
-  }));
+  }
+));
+
+passport.use(new CookieStrategy(
+  (token, done) => {
+    User.findByToken({ token: token }, (err, user) => {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false);
+      }
+      return done(null, user);
+    });
+  }
+));
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -34,6 +50,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   UserModel.findById(id, (err, user) => {
+    console.log('deserializeUser', user);
+    delete user.password;
+    delete user._id;
+    delete user._v;
     done(err, user);
   });
 });

@@ -1,3 +1,6 @@
-<h1>Hello world!</h1>
+<app-header [currentUser]="currentUser"></app-header>
+<main class="main" [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
+  <router-outlet #o="outlet"></router-outlet>
+</main>
 
-<router-outlet></router-outlet>
+<app-popup></app-popup>

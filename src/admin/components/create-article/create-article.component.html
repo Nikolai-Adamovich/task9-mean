@@ -1,0 +1,17 @@
+<mat-card  class="mat-elevation-z2">
+  <form #createArticleForm="ngForm" (ngSubmit)="createArticleForm.valid && onFormSubmit()" class="form" novalidate>
+    <mat-card-title>Login to your account</mat-card-title>
+    <mat-form-field>
+      <input matInput [(ngModel)]="article.title" #title="ngModel" name="title" placeholder="Title" type="text"
+        required maxlength="60">
+      <mat-error *ngIf="title.errors?.required">Title is required</mat-error>
+    </mat-form-field>
+    <div>
+      <ckeditor [(ngModel)]="article.content" #content="ngModel" name="content" [editor]="Editor" required></ckeditor>
+      <mat-error *ngIf="content.invalid && content.touched">Content is required</mat-error>
+    </div>
+    <mat-card-actions>
+      <button [disabled]="createArticleForm.invalid" mat-button>Create</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

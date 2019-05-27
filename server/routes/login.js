@@ -3,9 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 
 router.get('/', (req, res, next) => {
-  res.render('login', {
-    title: 'Login'
-  });
+  res.render('index');
 });
 
 router.post('/', (req, res, next) => {
@@ -14,14 +12,15 @@ router.post('/', (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.status(401).send(info);
+      return res.status(400).send({
+        message: info.error
+      });
     }
     req.login(user, (err) => {
       if (err) {
         return next(err);
       }
-      //return res.redirect('/users/' + user.username);
-      return res.send();
+      return res.send(user);
     });
   })(req, res, next);
 });

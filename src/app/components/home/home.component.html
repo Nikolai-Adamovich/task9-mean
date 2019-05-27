@@ -1,0 +1,25 @@
+<div class="transition-block">
+  <div class="transition-block__content">
+
+    <ul class="news">
+      <li *ngFor="let newsItem of news | paginate: { itemsPerPage: 10, currentPage: p }" class="news__item">
+        <mat-card class="news__article mat-elevation-z2">
+          <h2 class="news__title">{{newsItem.title}}</h2>
+          <div class="news__main">
+            <div class="news__image">
+              <img src="{{newsItem.imgUrl}}" alt="">
+            </div>
+            <div class="news__content">{{newsItem.content}}</div>
+          </div>
+          <footer class="news__footer">
+            <div class="news__author">{{newsItem.author}}</div>
+            <div class="news__published-at">{{newsItem.publishedAt | date :'short'}}</div>
+          </footer>
+        </mat-card>
+      </li>
+    </ul>
+
+    <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+
+  </div>
+</div>

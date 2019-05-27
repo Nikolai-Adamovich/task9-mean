@@ -1,0 +1,45 @@
+@import '../../../scss/mixins';
+@import '../../../scss/variables';
+
+.header {
+  height: 56px;
+
+  @media ($tablet) {
+    height: 64px;
+  }
+}
+
+.header__fixed {
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.header__container {
+  @include container();
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media ($tablet) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  @media ($desktop) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+mat-menu {
+  position: absolute;
+}

@@ -2,16 +2,17 @@ const express = require('express');
 const router = express.Router();
 const NewsModel = require('../models/news.js');
 
-/* GET news listing. */
-/* router.get('/', (req, res, next) => {
-  NewsModel.find({}, (err, data) => {
-    if (err) {
-      res.status(400).send(err);
-    } else {
-      res.send(data);
-    }
-  });
-}); */
+/* GET news list */
+router.get('/', async (req, res, next) => {
+  try {
+    // const newsList = await NewsModel.find().skip((pageNumber - 1) * newsPerPage).limit(newsPerPage);
+    const newsList = await NewsModel.find({}, { __v: 0, _id: 0 });
+
+    res.status(200).send(newsList);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
 
 /* GET news by slug. */
 router.get('/:slug', (req, res, next) => {
