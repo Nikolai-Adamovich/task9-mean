@@ -11,7 +11,7 @@ import { IPopupComponent } from '../../interfaces/popup-component.interface';
 })
 export class PopupComponent implements AfterViewInit, OnDestroy {
   subscription: Subscription;
-  @ViewChild(PopupDirective) popupDirective: PopupDirective;
+  @ViewChild(PopupDirective, { static: false }) popupDirective: PopupDirective;
 
   constructor(private popupService: PopupService, private componentFactoryResolver: ComponentFactoryResolver,
               private viewContainerRef: ViewContainerRef) { }
