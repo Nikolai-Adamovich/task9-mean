@@ -4,19 +4,19 @@
     <mat-form-field>
       <input matInput [(ngModel)]="data.username" #username="ngModel" name="username" placeholder="Name" type="text"
         required pattern="[A-Za-z]{2,}[0-9]*" appForbiddenName="admin" maxlength="20">
-      <mat-error *ngIf="username.touched && username.errors?.required">Name is required</mat-error>
-      <mat-error *ngIf="username.touched && username.errors?.pattern">Invalid name</mat-error>
-      <mat-error *ngIf="username.touched && username.errors?.forbiddenName">Name
+      <mat-error *ngIf="username.errors?.required">Name is required</mat-error>
+      <mat-error *ngIf="username.errors?.pattern">Invalid name</mat-error>
+      <mat-error *ngIf="username.errors?.forbiddenName">Name
         «{{username.errors?.forbiddenName.value}}» is forbidden</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput [(ngModel)]="data.email" #email="ngModel" name="email" class="form__input" placeholder="Email"
         type="email" email required>
-      <mat-error *ngIf="email.touched && email.errors?.required">Email is required</mat-error>
-      <mat-error *ngIf="email.touched && email.errors?.email">Invalid email</mat-error>
+      <mat-error *ngIf="email.errors?.required">Email is required</mat-error>
+      <mat-error *ngIf="email.errors?.email">Invalid email</mat-error>
     </mat-form-field>
     <div>
-      <label id="role" class="radio-group-label">Role</label>
+      <label id="role" class="form-label">Role</label>
       <mat-radio-group [(ngModel)]="data.role" name="role" aria-labelledby="role">
         <mat-radio-button value="user" color="primary">User</mat-radio-button>
         <mat-radio-button value="admin" color="primary">Admin</mat-radio-button>

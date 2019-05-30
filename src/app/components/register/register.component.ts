@@ -8,17 +8,14 @@ import { IUser } from '../../interfaces/user.interface';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+
   constructor(private userService: UserService) { }
 
-  user: IUser = {
-    username: ''
-  };
-
-  onFormSubmit() {
+  onFormSubmit(registerForm: { value: IUser }) {
     this.userService.registerUser({
-      username: this.user.username,
-      email: this.user.email,
-      password: this.user.password,
+      username: registerForm.value.username,
+      email: registerForm.value.email,
+      password: registerForm.value.password,
       role: 'user',
     });
   }

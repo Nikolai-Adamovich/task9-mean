@@ -11,3 +11,15 @@
 .mat-form-field {
   width: 100%;
 }
+
+.cke-field {
+  padding: 0.84375rem 0 1.125rem;
+  position: relative;
+
+  .mat-error {
+    font-size: 0.75rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}

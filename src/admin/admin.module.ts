@@ -14,6 +14,8 @@ import { AdminService } from './services/admin/admin.service';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ConfirmDialogComponent } from '../app/components/confirm-dialog/confirm-dialog.component';
 import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
+import { ImagePickerComponent } from './components/image-picker/image-picker.component';
+import { AddUrlDialogComponent } from './components/add-url-dialog/add-url-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user
     CreateArticleComponent,
     WelcomeComponent,
     EditUserDialogComponent,
+    ImagePickerComponent,
+    AddUrlDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +40,8 @@ import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user
     CreateArticleComponent,
     WelcomeComponent,
     EditUserDialogComponent,
+    ImagePickerComponent,
+    AddUrlDialogComponent,
   ],
   providers: [
     AdminService,
@@ -43,6 +49,7 @@ import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user
   entryComponents: [
     ConfirmDialogComponent,
     EditUserDialogComponent,
+    AddUrlDialogComponent,
   ],
 })
 export class AdminModule { }

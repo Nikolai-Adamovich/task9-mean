@@ -1,0 +1,28 @@
+<div class="picker">
+
+  <div class="picker__label">Hero image *</div>
+
+  <mat-button-toggle-group [(ngModel)]="buttonToggleGroupValue" [ngModelOptions]="{standalone: true}">
+    <mat-button-toggle (click)="fileInput.click()" value="byImage" matTooltip="Upload image">
+      <mat-icon>cloud_upload</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle (click)="onExternalUrlClick()" value="byUrl" matTooltip="Add external image url">
+      <mat-icon>link</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <div class="picker__image-wrapper">
+    <img *ngIf="imageUrl.value" [src]="imageUrl.value" src="" class="picker__image">
+    <mat-icon *ngIf="!imageUrl.value" class="picker__image-background">image</mat-icon>
+    <button *ngIf="imageUrl.value" (click)="onClearButtonClick(file)" mat-icon-button matTooltip="Clear" class="picker__clear-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <input ngModel #file="ngModel" [ngModelOptions]="{standalone: true}" #fileInput type="file" accept="image/*"
+    (change)="onFileChange($event)" (click)="buttonToggleGroupValue = ''" hidden>
+
+  <input ngModel #imageUrl="ngModel" name="imgUrl" type="url" required hidden>
+  <mat-error *ngIf="imageUrl.touched && imageUrl.errors?.required" class="picker__error">Hero image is required</mat-error>
+
+</div>

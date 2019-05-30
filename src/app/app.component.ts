@@ -10,7 +10,7 @@ import { IUser } from './interfaces/user.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  currentUser: IUser | undefined;
+  private currentUser: IUser | undefined;
 
   constructor(private userService: UserService) { }
 

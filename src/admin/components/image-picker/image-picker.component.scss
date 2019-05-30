@@ -1,0 +1,45 @@
+@import '../../../scss/variables';
+
+.picker {
+  margin: 1rem 0;
+  position: relative;
+}
+
+.picker__label {
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+  color: $gray;
+}
+
+.picker__image-wrapper {
+  height: 350px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picker__image {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+.picker__image-background {
+  width: 150px;
+  height: 150px;
+  font-size: 150px;
+  color: $gray;
+}
+
+.picker__clear-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.picker__error {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.75rem;
+}

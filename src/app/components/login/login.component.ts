@@ -9,21 +9,12 @@ import { IUser } from '../../interfaces/user.interface';
 })
 export class LoginComponent {
 
-  private user: IUser = {};
-
   constructor(private userService: UserService) { }
 
-  /* onFormSubmit(loginForm: { value: { username: string; password: string; }; }) {
+  onFormSubmit(loginForm: { value: IUser }) {
     this.userService.login({
       username: loginForm.value.username,
       password: loginForm.value.password,
-    });
-  } */
-
-  onFormSubmit() {
-    this.userService.login({
-      username: this.user.username,
-      password: this.user.password,
     });
   }
 

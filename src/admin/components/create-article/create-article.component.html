@@ -1,17 +1,27 @@
 <mat-card  class="mat-elevation-z2">
+  <h1>Current user: {{user}}</h1>
   <form #createArticleForm="ngForm" (ngSubmit)="createArticleForm.valid && onFormSubmit()" class="form" novalidate>
-    <mat-card-title>Login to your account</mat-card-title>
     <mat-form-field>
-      <input matInput [(ngModel)]="article.title" #title="ngModel" name="title" placeholder="Title" type="text"
-        required maxlength="60">
+      <input matInput ngModel #title="ngModel" name="title" placeholder="Title" type="text"
+        required maxlength="60" (input)="onTitleInput(createArticleForm)">
       <mat-error *ngIf="title.errors?.required">Title is required</mat-error>
     </mat-form-field>
-    <div>
-      <ckeditor [(ngModel)]="article.content" #content="ngModel" name="content" [editor]="Editor" required></ckeditor>
+    <mat-form-field>
+      <input matInput ngModel #slug="ngModel" name="slug" placeholder="Slug" type="text"
+        pattern="[a-z0-9]+(\-{1,1}[a-z0-9]+)*" required>
+      <mat-error *ngIf="slug.errors?.required">Slug is required</mat-error>
+      <mat-error *ngIf="slug.errors?.pattern">Invalid slug</mat-error>
+    </mat-form-field>
+    <app-image-picker></app-image-picker>
+    <div class="cke-field">
+      <label class="form-label">Content *</label>
+      <ckeditor ngModel #content="ngModel" name="content" [editor]="Editor" required></ckeditor>
       <mat-error *ngIf="content.invalid && content.touched">Content is required</mat-error>
     </div>
     <mat-card-actions>
       <button [disabled]="createArticleForm.invalid" mat-button>Create</button>
     </mat-card-actions>
+    <pre>{{createArticleForm.value | json}}</pre>
+    <pre>{{article | json}}</pre>
   </form>
 </mat-card>
