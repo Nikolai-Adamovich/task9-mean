@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as slug from 'slug';
 import { UserService } from '../../../app/services/user/user.service';
+import { ToolsService } from '../../../app/services/tools/tools.service';
 import { IUser } from '../../../app/interfaces/user.interface';
 import { IArticle } from '../../../app/interfaces/article.interface';
 
@@ -13,9 +14,12 @@ import { IArticle } from '../../../app/interfaces/article.interface';
 })
 export class CreateArticleComponent implements OnInit {
   private currentUser: IUser | undefined;
-  public Editor = ClassicEditor;
+  private Editor = ClassicEditor;
+  private Config = {
+    extraPlugins: [this.toolsService.base64UploadAdapterPlugin],
+  };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toolsService: ToolsService) { }
 
   ngOnInit() {
     this.userService.currentUser.subscribe((data: IUser | undefined) => {
@@ -28,8 +32,6 @@ export class CreateArticleComponent implements OnInit {
   }
 
   onTitleInput(createArticleForm: NgForm) {
-    // this.article.slug = slug(this.article.title, { lower: true });
-    // createArticleForm.controls.slug.touched = true;
     const articleSlug = slug(createArticleForm.controls.title.value, { lower: true });
     createArticleForm.controls.slug.setValue(articleSlug);
   }

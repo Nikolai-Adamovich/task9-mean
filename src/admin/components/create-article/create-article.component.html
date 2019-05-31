@@ -15,7 +15,7 @@
     <app-image-picker></app-image-picker>
     <div class="cke-field">
       <label class="form-label">Content *</label>
-      <ckeditor ngModel #content="ngModel" name="content" [editor]="Editor" required></ckeditor>
+      <ckeditor ngModel #content="ngModel" name="content" [editor]="Editor" [config]="Config" required></ckeditor>
       <mat-error *ngIf="content.invalid && content.touched">Content is required</mat-error>
     </div>
     <mat-card-actions>
