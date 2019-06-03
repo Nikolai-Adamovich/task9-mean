@@ -12,7 +12,9 @@ router.all('/*', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  res.render('index');
+  res.render('index', {
+    isDev: req.app.get('env') === 'development',
+  });
 });
 
 router.get('/create-article', (req, res, next) => {

@@ -2,7 +2,7 @@
   <div class="transition-block__content">
 
     <ul class="news">
-      <li *ngFor="let newsItem of news | paginate: { itemsPerPage: 10, currentPage: p }" class="news__item">
+      <li *ngFor="let newsItem of news | paginate: { itemsPerPage: 10, currentPage: currentPage }" class="news__item">
         <mat-card class="news__article mat-elevation-z2">
           <h2 class="news__title">{{newsItem.title}}</h2>
           <div class="news__main">
@@ -19,7 +19,7 @@
       </li>
     </ul>
 
-    <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+    <pagination-controls (pageChange)="currentPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
 
   </div>
 </div>

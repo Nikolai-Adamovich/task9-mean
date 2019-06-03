@@ -8,6 +8,7 @@ import { INews } from '../../interfaces/news.interface';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public currentPage: number;
 
   news: INews[];
 

@@ -13,7 +13,7 @@ import { IConfirmDialogData } from '../../../app/interfaces/confirm-dialog-data.
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent implements OnInit {
-  private usersList: IUser[];
+  public usersList: IUser[];
 
   constructor(private adminService: AdminService, private matDialog: MatDialog, private userService: UserService) { }
 

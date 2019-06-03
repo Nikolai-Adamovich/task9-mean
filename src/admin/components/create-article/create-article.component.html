@@ -1,6 +1,5 @@
 <mat-card  class="mat-elevation-z2">
-  <h1>Current user: {{user}}</h1>
-  <form #createArticleForm="ngForm" (ngSubmit)="createArticleForm.valid && onFormSubmit()" class="form" novalidate>
+  <form #createArticleForm="ngForm" (ngSubmit)="createArticleForm.valid && onFormSubmit(createArticleForm)" class="form" novalidate>
     <mat-form-field>
       <input matInput ngModel #title="ngModel" name="title" placeholder="Title" type="text"
         required maxlength="60" (input)="onTitleInput(createArticleForm)">
@@ -15,13 +14,11 @@
     <app-image-picker></app-image-picker>
     <div class="cke-field">
       <label class="form-label">Content *</label>
-      <ckeditor ngModel #content="ngModel" name="content" [editor]="Editor" [config]="Config" required></ckeditor>
+      <ckeditor ngModel #content="ngModel" name="content" [editor]="editor" [config]="config" required></ckeditor>
       <mat-error *ngIf="content.invalid && content.touched">Content is required</mat-error>
     </div>
     <mat-card-actions>
       <button [disabled]="createArticleForm.invalid" mat-button>Create</button>
     </mat-card-actions>
-    <pre>{{createArticleForm.value | json}}</pre>
-    <pre>{{article | json}}</pre>
   </form>
 </mat-card>

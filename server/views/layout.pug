@@ -13,5 +13,6 @@ html
     script(src='es2015-polyfills.js' nomodule)
     script(src='polyfills.js')
     script(src='styles.js')
-    script(src='vendor.js')
+    if isDev
+      script(src='vendor.js')
     script(src='main.js')

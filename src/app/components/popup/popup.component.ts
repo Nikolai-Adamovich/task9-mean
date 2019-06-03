@@ -34,7 +34,6 @@ export class PopupComponent implements AfterViewInit, OnDestroy {
   open(data: any) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(data.component);
     this.viewContainerRef = this.popupDirective.viewContainerRef;
-    // this.viewContainerRef.clear();
 
     const componentRef = this.viewContainerRef.createComponent(componentFactory);
     (componentRef.instance as IPopupComponent).options = data.options;

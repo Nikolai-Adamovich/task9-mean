@@ -13,9 +13,9 @@ import { IArticle } from '../../../app/interfaces/article.interface';
   styleUrls: ['./create-article.component.scss']
 })
 export class CreateArticleComponent implements OnInit {
-  private currentUser: IUser | undefined;
-  private Editor = ClassicEditor;
-  private Config = {
+  public currentUser: IUser | undefined;
+  public editor = ClassicEditor;
+  public config = {
     extraPlugins: [this.toolsService.base64UploadAdapterPlugin],
   };
 
@@ -27,8 +27,12 @@ export class CreateArticleComponent implements OnInit {
     });
   }
 
-  onFormSubmit() {
-    console.log(this.currentUser);
+  onFormSubmit(createArticleForm: NgForm) {
+    console.log(createArticleForm.value.title);
+    console.log(createArticleForm.value.slug);
+    console.log(createArticleForm.value.imgUrl);
+    console.log(createArticleForm.value.content);
+    console.log(this.currentUser.username);
   }
 
   onTitleInput(createArticleForm: NgForm) {

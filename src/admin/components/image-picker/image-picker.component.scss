@@ -3,6 +3,7 @@
 .picker {
   margin: 1rem 0;
   position: relative;
+  user-select: none;
 }
 
 .picker__label {

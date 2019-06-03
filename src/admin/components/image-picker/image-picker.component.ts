@@ -11,8 +11,8 @@ import { AddUrlDialogComponent } from '../add-url-dialog/add-url-dialog.componen
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class ImagePickerComponent {
-  private buttonToggleGroupValue: string;
-  private currentButton: string;
+  public buttonToggleGroupValue: string;
+  public currentButton: string;
 
   constructor(private form: NgForm, private matDialog: MatDialog, private toolsService: ToolsService) { }
 

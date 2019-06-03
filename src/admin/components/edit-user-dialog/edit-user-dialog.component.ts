@@ -7,8 +7,8 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./edit-user-dialog.component.scss']
 })
 export class EditUserDialogComponent {
-  private primaryUserState = {...this.data};
+  public primaryUserState = {...this.data};
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
 
 }
