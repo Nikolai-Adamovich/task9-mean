@@ -16,6 +16,14 @@ export class CreateArticleComponent implements OnInit {
   public currentUser: IUser | undefined;
   public editor = ClassicEditor;
   public config = {
+    image: {
+      toolbar: ['imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+      styles: [
+        'full',
+        'alignLeft',
+        'alignRight',
+      ]
+    },
     extraPlugins: [this.toolsService.base64UploadAdapterPlugin],
   };
 
