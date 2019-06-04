@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "heroku-prebuild": "npm i -D",
-    "start": "cross-env NODE_ENV=production PORT=80 node ./server/bin/www",
+    "start": "cross-env NODE_ENV=production node ./server/bin/www",
     "heroku-postbuild": "ng build --prod=true --progress=true",
     "dev": "npm-run-all -p build-dev node-dev",
     "build-dev": "ng build --progress=true --watch=true",
