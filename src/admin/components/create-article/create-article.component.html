@@ -7,7 +7,7 @@
     </mat-form-field>
     <mat-form-field>
       <input matInput ngModel #slug="ngModel" name="slug" placeholder="Slug" type="text"
-        pattern="[a-z0-9]+(\-{1,1}[a-z0-9]+)*" required>
+        pattern="[a-z0-9]+(-{1,1}[a-z0-9]+)*" required>
       <mat-error *ngIf="slug.errors?.required">Slug is required</mat-error>
       <mat-error *ngIf="slug.errors?.pattern">Invalid slug</mat-error>
     </mat-form-field>
