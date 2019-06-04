@@ -18,11 +18,15 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/create-article', (req, res, next) => {
-  res.render('index');
+  res.render('index', {
+    isDev: req.app.get('env') === 'development',
+  });
 });
 
 router.get('/users', (req, res, next) => {
-  res.render('index');
+  res.render('index', {
+    isDev: req.app.get('env') === 'development',
+  });
 });
 
 router.get('/edit-news/:slug', (req, res, next) => {
