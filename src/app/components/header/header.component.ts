@@ -10,6 +10,6 @@ import { IUser } from '../../interfaces/user.interface';
 export class HeaderComponent {
   @Input() currentUser: IUser | undefined ;
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
 }

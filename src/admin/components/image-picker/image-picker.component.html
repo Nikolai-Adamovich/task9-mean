@@ -23,6 +23,6 @@
     (change)="onFileChange($event)" (click)="buttonToggleGroupValue = ''" hidden>
 
   <input ngModel #imageUrl="ngModel" name="imgUrl" type="url" required hidden>
-  <mat-error *ngIf="imageUrl.touched && imageUrl.errors?.required" class="picker__error">Hero image is required</mat-error>
+  <mat-error *ngIf="imageUrl.touched && imageUrl?.errors?.required" class="picker__error">Hero image is required</mat-error>
 
 </div>

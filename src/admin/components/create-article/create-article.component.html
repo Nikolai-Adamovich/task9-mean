@@ -3,13 +3,13 @@
     <mat-form-field>
       <input matInput ngModel #title="ngModel" name="title" placeholder="Title" type="text"
         required maxlength="60" (input)="onTitleInput(createArticleForm)">
-      <mat-error *ngIf="title.errors?.required">Title is required</mat-error>
+      <mat-error *ngIf="title?.errors?.required">Title is required</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput ngModel #slug="ngModel" name="slug" placeholder="Slug" type="text"
         pattern="[a-z0-9]+(-{1,1}[a-z0-9]+)*" required>
-      <mat-error *ngIf="slug.errors?.required">Slug is required</mat-error>
-      <mat-error *ngIf="slug.errors?.pattern">Invalid slug</mat-error>
+      <mat-error *ngIf="slug?.errors?.required">Slug is required</mat-error>
+      <mat-error *ngIf="slug?.errors?.pattern">Invalid slug</mat-error>
     </mat-form-field>
     <app-image-picker></app-image-picker>
     <div class="cke-field">

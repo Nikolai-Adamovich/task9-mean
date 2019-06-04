@@ -4,8 +4,8 @@
     <mat-form-field>
       <input matInput ngModel #url="ngModel" name="url" placeholder="Image url"
         [pattern]="urlRe" required>
-      <mat-error *ngIf="url.errors?.required">Image url is required</mat-error>
-      <mat-error *ngIf="url.errors?.pattern">Invalid url</mat-error>
+      <mat-error *ngIf="url?.errors?.required">Image url is required</mat-error>
+      <mat-error *ngIf="url?.errors?.pattern">Invalid url</mat-error>
     </mat-form-field>
   </div>
   <mat-dialog-actions align="end">
