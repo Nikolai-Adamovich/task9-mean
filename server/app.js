@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
 const passport = require('passport');
 
 const indexRouter = require('./routes/index');
@@ -29,7 +31,8 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.use(session({
   secret: 'nothingReallySecretHere',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
 // Passport
