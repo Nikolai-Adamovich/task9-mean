@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as slug from 'slug';
@@ -10,7 +10,8 @@ import { IArticle } from '../../../app/interfaces/article.interface';
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
-  styleUrls: ['./create-article.component.scss']
+  styleUrls: ['./create-article.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateArticleComponent implements OnInit {
   public currentUser: IUser | undefined;

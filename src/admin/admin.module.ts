@@ -6,11 +6,10 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
+import { AdminService } from './services/admin/admin.service';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
-import { AdminService } from './services/admin/admin.service';
-
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ConfirmDialogComponent } from '../app/components/confirm-dialog/confirm-dialog.component';
 import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';

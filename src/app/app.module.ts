@@ -10,6 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { NewsService } from './services/news/news.service';
 import { UserService } from './services/user/user.service';
 import { PopupService } from './services/popup/popup.service';
 import { HomeComponent } from './components/home/home.component';
@@ -46,6 +47,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     NgxPaginationModule,
   ],
   providers: [
+    NewsService,
     UserService,
     PopupService,
   ],

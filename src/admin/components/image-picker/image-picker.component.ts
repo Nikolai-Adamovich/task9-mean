@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ControlContainer, NgForm, NgModel } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ToolsService } from '../../../app/services/tools/tools.service';
@@ -9,12 +9,13 @@ import { AddUrlDialogComponent } from '../add-url-dialog/add-url-dialog.componen
   templateUrl: './image-picker.component.html',
   styleUrls: ['./image-picker.component.scss'],
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImagePickerComponent {
   public buttonToggleGroupValue: string;
   public currentButton: string;
 
-  constructor(private form: NgForm, private matDialog: MatDialog, private toolsService: ToolsService) { }
+  constructor(private form: NgForm, private matDialog: MatDialog, private toolsService: ToolsService, private ref: ChangeDetectorRef) { }
 
   async onFileChange($event: Event) {
     const file = ($event.target as HTMLInputElement).files[0];
@@ -25,6 +26,8 @@ export class ImagePickerComponent {
     } else {
       this.buttonToggleGroupValue = this.currentButton;
     }
+
+    this.ref.markForCheck();
   }
 
   onExternalUrlClick() {
@@ -42,6 +45,8 @@ export class ImagePickerComponent {
       } else {
         this.buttonToggleGroupValue = this.currentButton;
       }
+
+      this.ref.markForCheck();
     });
   }
 
