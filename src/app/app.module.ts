@@ -18,7 +18,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ForbiddenNameDirective } from './directives/forbidden-name/forbidden-name.directive';
 import { PopupComponent } from './components/popup/popup.component';
-import { PopupDirective } from './directives/popup/popup.directive';
 import { PopupMessageComponent } from './components/popup-message/popup-message.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
@@ -31,7 +30,6 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     HeaderComponent,
     ForbiddenNameDirective,
     PopupComponent,
-    PopupDirective,
     PopupMessageComponent,
     LoginComponent,
     ConfirmDialogComponent,

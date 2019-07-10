@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, ComponentFactoryResolver, OnDestroy, ViewContainerRef, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PopupService } from '../../services/popup/popup.service';
-import { PopupDirective } from '../../directives/popup/popup.directive';
 import { IPopupComponent } from '../../interfaces/popup-component.interface';
 
 @Component({
@@ -11,17 +10,17 @@ import { IPopupComponent } from '../../interfaces/popup-component.interface';
 })
 export class PopupComponent implements AfterViewInit, OnDestroy {
   subscription: Subscription;
-  @ViewChild(PopupDirective, { static: false }) popupDirective: PopupDirective;
+  @ViewChild('container', {
+    static: false,
+    read: ViewContainerRef,
+  }) viewContainerRef: ViewContainerRef;
 
-  constructor(private popupService: PopupService, private componentFactoryResolver: ComponentFactoryResolver,
-              private viewContainerRef: ViewContainerRef) { }
+  constructor(private popupService: PopupService, private componentFactoryResolver: ComponentFactoryResolver) { }
   ngAfterViewInit() {
     this.subscription = this.popupService.popupDialog$.subscribe((data) => {
       if (!!data && data.popupEvent === 'open') {
         this.open(data);
-      } else if (data &&
-        (data.popupEvent === 'close')
-      ) {
+      } else if (data && data.popupEvent === 'close') {
         this.close(data.viewRef);
       }
     });
@@ -33,8 +32,6 @@ export class PopupComponent implements AfterViewInit, OnDestroy {
 
   open(data: any) {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(data.component);
-    this.viewContainerRef = this.popupDirective.viewContainerRef;
-
     const componentRef = this.viewContainerRef.createComponent(componentFactory);
     (componentRef.instance as IPopupComponent).options = data.options;
     (componentRef.instance as IPopupComponent).viewRef = componentRef.hostView;
