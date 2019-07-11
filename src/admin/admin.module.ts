@@ -11,7 +11,7 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { CreateArticleComponent } from './components/create-article/create-article.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
-import { ConfirmDialogComponent } from '../app/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
 import { ImagePickerComponent } from './components/image-picker/image-picker.component';
 import { AddUrlDialogComponent } from './components/add-url-dialog/add-url-dialog.component';
@@ -22,6 +22,7 @@ import { AddUrlDialogComponent } from './components/add-url-dialog/add-url-dialo
     UsersListComponent,
     CreateArticleComponent,
     WelcomeComponent,
+    ConfirmDialogComponent,
     EditUserDialogComponent,
     ImagePickerComponent,
     AddUrlDialogComponent,
@@ -38,6 +39,7 @@ import { AddUrlDialogComponent } from './components/add-url-dialog/add-url-dialo
     UsersListComponent,
     CreateArticleComponent,
     WelcomeComponent,
+    ConfirmDialogComponent,
     EditUserDialogComponent,
     ImagePickerComponent,
     AddUrlDialogComponent,

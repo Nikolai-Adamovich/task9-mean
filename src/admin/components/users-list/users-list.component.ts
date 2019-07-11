@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ConfirmDialogComponent } from '../../../app/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 import { AdminService } from '../../services/admin/admin.service';
 import { UserService } from '../../../app/services/user/user.service';
