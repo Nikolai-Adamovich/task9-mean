@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { INews } from '../../interfaces/news.interface';
 
 @Injectable({
@@ -10,11 +10,14 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  news: Subject<INews[]> = new Subject();
+  private _news: Subject<INews[]> = new Subject();
+  public get news(): Observable<INews[]> {
+    return this._news.asObservable();
+  }
 
   getNews(): void {
     this.http.get('/news').subscribe((data: INews[]) => {
-      this.news.next(data);
+      this._news.next(data);
     });
   }
 

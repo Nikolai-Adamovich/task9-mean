@@ -12,7 +12,10 @@ import { IMongoError } from '../../interfaces/mongo-error.interface';
   providedIn: 'root'
 })
 export class UserService {
-  public currentUser: BehaviorSubject<IUser | undefined> = new BehaviorSubject(undefined);
+  private _currentUser: BehaviorSubject<IUser | undefined> = new BehaviorSubject(undefined);
+  public get currentUser(): Observable<IUser | undefined> {
+    return this._currentUser.asObservable();
+  }
 
   constructor(private http: HttpClient, private router: Router, private popupService: PopupService) { }
 
@@ -57,7 +60,7 @@ export class UserService {
 
   getCurrentUser(): void {
     this.http.get('/user').subscribe((data: IUser) => {
-      this.currentUser.next(data);
+      this._currentUser.next(data);
     });
   }
 
@@ -120,7 +123,7 @@ export class UserService {
         'Content-Type': 'application/json',
       })
     }).subscribe((data: IUser) => {
-      this.currentUser.next(data);
+      this._currentUser.next(data);
       this.popupService.open(PopupMessageComponent, {
         type: 'success',
         closeTimeout: 5,
@@ -134,7 +137,7 @@ export class UserService {
 
   logout(): void {
     this.http.get('/logout').subscribe(() => {
-      this.currentUser.next(undefined);
+      this._currentUser.next(undefined);
       this.popupService.open(PopupMessageComponent, {
         closeTimeout: 5,
         message: 'You have logged out',
