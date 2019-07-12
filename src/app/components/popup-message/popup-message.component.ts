@@ -1,4 +1,4 @@
-import { Component, Input, OnInit  } from '@angular/core';
+import { Component, Input, OnInit, ViewRef  } from '@angular/core';
 import { PopupService } from '../../services/popup/popup.service';
 import { popupMessageTransition } from '../../animations/popup-message.animation';
 import { IPopupComponent } from '../../interfaces/popup-component.interface';
@@ -11,7 +11,7 @@ import { IPopupComponent } from '../../interfaces/popup-component.interface';
 })
 export class PopupMessageComponent implements OnInit {
   @Input() options: IPopupComponent['options'];
-  @Input() viewRef: IPopupComponent['viewRef'];
+  @Input() viewRef: ViewRef;
   showHideTriggerState: string;
 
   constructor(private popupService: PopupService) { }

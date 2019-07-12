@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ComponentFactoryResolver, OnDestroy, ViewContainerRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ComponentFactoryResolver, OnDestroy, ViewContainerRef, ViewChild, ViewRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PopupService } from '../../services/popup/popup.service';
 import { IPopupComponent } from '../../interfaces/popup-component.interface';
@@ -37,7 +37,7 @@ export class PopupComponent implements AfterViewInit, OnDestroy {
     (componentRef.instance as IPopupComponent).viewRef = componentRef.hostView;
   }
 
-  close(viewRef: IPopupComponent['viewRef']) {
+  close(viewRef: ViewRef) {
     const currentIndex = this.viewContainerRef.indexOf(viewRef);
     this.viewContainerRef.detach(currentIndex);
   }

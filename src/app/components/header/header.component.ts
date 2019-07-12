@@ -9,7 +9,7 @@ import { IUser } from '../../interfaces/user.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input() currentUser: IUser | undefined ;
+  @Input() currentUser: IUser | undefined;
 
   constructor(public userService: UserService) { }
 
